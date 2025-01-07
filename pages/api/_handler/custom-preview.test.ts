@@ -12,33 +12,33 @@ afterAll(() => {
 describe("URL param", () => {
   it("empty", async () => {
     const r = await handleUrl({
-      url: "https://l.garyyang.work/",
+      url: "https://lark.justwarnings.com/",
       fullMode: false,
     });
     expect(r).toEqual({
       inline: {
         image_key: defaultImageKey,
-        title: "自定义飞书链接预览@l.garyyang.work",
+        title: "自定义飞书链接预览@lark.justwarnings.com",
       },
     });
   });
 
   it("editor", async () => {
     const r = await handleUrl({
-      url: "https://l.garyyang.work/editor",
+      url: "https://lark.justwarnings.com/editor",
       fullMode: false,
     });
     expect(r).toEqual({
       inline: {
         image_key: defaultImageKey,
-        title: "自定义飞书链接预览编辑器@l.garyyang.work",
+        title: "自定义飞书链接预览编辑器@lark.justwarnings.com",
       },
     });
   });
 
   it("t param", async () => {
     const r = await handleUrl({
-      url: "https://l.garyyang.work/?t=123",
+      url: "https://lark.justwarnings.com/?t=123",
       fullMode: false,
     });
     expect(r).toEqual({
@@ -51,7 +51,7 @@ describe("URL param", () => {
 
   it("t2 param", async () => {
     const r = await handleUrl({
-      url: "https://l.garyyang.work/?t2=19PqtKE1t",
+      url: "https://lark.justwarnings.com/?t2=19PqtKE1t",
       fullMode: false,
     });
     expect(r).toEqual({
@@ -64,7 +64,7 @@ describe("URL param", () => {
 
   it("k param", async () => {
     const r = await handleUrl({
-      url: "https://l.garyyang.work/?k=123",
+      url: "https://lark.justwarnings.com/?k=123",
       fullMode: false,
     });
     expect(r).toEqual({
@@ -77,7 +77,7 @@ describe("URL param", () => {
 
   it("t & k param", async () => {
     const r = await handleUrl({
-      url: "https://l.garyyang.work/?k=999&t=888",
+      url: "https://lark.justwarnings.com/?k=999&t=888",
       fullMode: false,
     });
     expect(r).toEqual({
@@ -90,7 +90,7 @@ describe("URL param", () => {
 
   it("bio_expand", async () => {
     const r = await handleUrl({
-      url: "https://l.garyyang.work/?k=999&t=888&be=1",
+      url: "https://lark.justwarnings.com/?k=999&t=888&be=1",
       fullMode: false,
     });
     expect(r).toEqual({
@@ -104,7 +104,7 @@ describe("URL param", () => {
   it("mixed token", async () => {
     const r = await handleUrl({
       url:
-        "https://l.garyyang.work/?t=" +
+        "https://lark.justwarnings.com/?t=" +
         encodeURIComponent(
           "Hi {{name}}~姓{{name_last}}名{{name_short}}~{{name}}",
         ),
@@ -127,7 +127,7 @@ describe("URL param", () => {
     jest.useFakeTimers().setSystemTime(new Date("2020-01-01"));
     const r1 = await handleUrl({
       url:
-        "https://l.garyyang.work/?k=" +
+        "https://lark.justwarnings.com/?k=" +
         encodeURIComponent(
           // language=Handlebars
           tpl,
@@ -137,14 +137,14 @@ describe("URL param", () => {
 
     jest.useFakeTimers().setSystemTime(new Date("2020-02-01"));
     const r2 = await handleUrl({
-      url: "https://l.garyyang.work/?k=" + encodeURIComponent(tpl),
+      url: "https://lark.justwarnings.com/?k=" + encodeURIComponent(tpl),
     });
     expect(r2.inline.image_key).toEqual("img_k2");
   });
 
   it("cp param", async () => {
     const r = await handleUrl({
-      url: `https://l.garyyang.work/?t=Hi~&k=img_v3_029v_3c667814-a576-4d76-8d1e-62e9b09af28g&cp=${encodeURIComponent("https://example.com")}`,
+      url: `https://lark.justwarnings.com/?t=Hi~&k=img_v3_029v_3c667814-a576-4d76-8d1e-62e9b09af28g&cp=${encodeURIComponent("https://example.com")}`,
       fullMode: false,
       senderUserUnionId: "1",
       operatorUserUnionId: "on_test_0",
@@ -164,7 +164,7 @@ describe("URL param", () => {
 describe("name", () => {
   it("{{name}} fallback - no user id", async () => {
     const r = await handleUrl({
-      url: "https://l.garyyang.work/?t=Hi%20%7B%7Bname%7D%7D~&k=img_v3_029v_3c667814-a576-4d76-8d1e-62e9b09af28g",
+      url: "https://lark.justwarnings.com/?t=Hi%20%7B%7Bname%7D%7D~&k=img_v3_029v_3c667814-a576-4d76-8d1e-62e9b09af28g",
       fullMode: false,
     });
     expect(r).toEqual({
@@ -177,7 +177,7 @@ describe("name", () => {
 
   it("{{name}} valid 1", async () => {
     const r = await handleUrl({
-      url: "https://l.garyyang.work/?t=Hi%20%7B%7Bname%7D%7D~&k=img_v3_029v_3c667814-a576-4d76-8d1e-62e9b09af28g",
+      url: "https://lark.justwarnings.com/?t=Hi%20%7B%7Bname%7D%7D~&k=img_v3_029v_3c667814-a576-4d76-8d1e-62e9b09af28g",
       fullMode: false,
       senderUserUnionId: "on_test_0",
       operatorUserUnionId: "on_test_1",
@@ -192,7 +192,7 @@ describe("name", () => {
 
   it("{{name}} valid 2", async () => {
     const r = await handleUrl({
-      url: "https://l.garyyang.work/?t=Hi%20%7B%7Bname%7D%7D~&k=img_v3_029v_3c667814-a576-4d76-8d1e-62e9b09af28g",
+      url: "https://lark.justwarnings.com/?t=Hi%20%7B%7Bname%7D%7D~&k=img_v3_029v_3c667814-a576-4d76-8d1e-62e9b09af28g",
       fullMode: false,
       senderUserUnionId: "on_test_1",
       operatorUserUnionId: "on_test_0",
@@ -207,7 +207,7 @@ describe("name", () => {
 
   it("{{name}} fallback - invalid both", async () => {
     const r = await handleUrl({
-      url: "https://l.garyyang.work/?t=Hi%20%7B%7Bname%7D%7D~&k=img_v3_029v_3c667814-a576-4d76-8d1e-62e9b09af28g",
+      url: "https://lark.justwarnings.com/?t=Hi%20%7B%7Bname%7D%7D~&k=img_v3_029v_3c667814-a576-4d76-8d1e-62e9b09af28g",
       fullMode: false,
       senderUserUnionId: "1",
       operatorUserUnionId: "1",
@@ -221,7 +221,7 @@ describe("name", () => {
   });
   it("{{name}} fallback - invalid operator", async () => {
     const r = await handleUrl({
-      url: "https://l.garyyang.work/?t=Hi%20%7B%7Bname%7D%7D~&k=img_v3_029v_3c667814-a576-4d76-8d1e-62e9b09af28g",
+      url: "https://lark.justwarnings.com/?t=Hi%20%7B%7Bname%7D%7D~&k=img_v3_029v_3c667814-a576-4d76-8d1e-62e9b09af28g",
       fullMode: false,
       senderUserUnionId: "on_test_0",
       operatorUserUnionId: "1",
@@ -236,7 +236,7 @@ describe("name", () => {
 
   it("{{name}} fallback - invalid sender", async () => {
     const r = await handleUrl({
-      url: "https://l.garyyang.work/?t=Hi%20%7B%7Bname%7D%7D~&k=img_v3_029v_3c667814-a576-4d76-8d1e-62e9b09af28g",
+      url: "https://lark.justwarnings.com/?t=Hi%20%7B%7Bname%7D%7D~&k=img_v3_029v_3c667814-a576-4d76-8d1e-62e9b09af28g",
       fullMode: false,
       senderUserUnionId: "1",
       operatorUserUnionId: "on_test_0",
@@ -255,7 +255,7 @@ describe("time", () => {
     jest.useFakeTimers().setSystemTime(new Date("2020-01-01"));
     const r1 = await handleUrl({
       url:
-        "https://l.garyyang.work/?t=" +
+        "https://lark.justwarnings.com/?t=" +
         encodeURIComponent("{{time_diff m='from' t='2013-03-01'}}"),
     });
     expect(r1).toEqual({
@@ -266,7 +266,7 @@ describe("time", () => {
     });
     const r2 = await handleUrl({
       url:
-        "https://l.garyyang.work/?t=" +
+        "https://lark.justwarnings.com/?t=" +
         encodeURIComponent("{{time_diff m='to' t='2013-03-01'}}"),
     });
     expect(r2).toEqual({
@@ -281,7 +281,7 @@ describe("time", () => {
   it("{{time_diff t='2014-03-01' f='s' tz='?'}}", async () => {
     const r1 = await handleUrl({
       url:
-        "https://l.garyyang.work/?t=" +
+        "https://lark.justwarnings.com/?t=" +
         encodeURIComponent(
           "{{time_diff t='2014-03-01' f='s' tz='America/Toronto'}}",
         ),
@@ -294,7 +294,7 @@ describe("time", () => {
     });
     const r2 = await handleUrl({
       url:
-        "https://l.garyyang.work/?t=" +
+        "https://lark.justwarnings.com/?t=" +
         encodeURIComponent(
           "{{time_diff t='2014-03-01' f='s' tz='Asia/Shanghai'}}",
         ),
@@ -316,7 +316,7 @@ describe("time", () => {
     jest.useFakeTimers().setSystemTime(new Date("2020-01-01 00:00:00")); // utc+8 +2h
     const r1 = await handleUrl({
       url:
-        "https://l.garyyang.work/?dtz=" +
+        "https://lark.justwarnings.com/?dtz=" +
         encodeURIComponent("Etc/GMT-10") +
         "&t=" +
         encodeURIComponent(
@@ -336,7 +336,7 @@ describe("time", () => {
     jest.useFakeTimers().setSystemTime(new Date("2020-01-01 00:00:00")); // utc+8 +2h
     const r1 = await handleUrl({
       url:
-        "https://l.garyyang.work/?dtz=" +
+        "https://lark.justwarnings.com/?dtz=" +
         encodeURIComponent("bad") +
         "&t=" +
         encodeURIComponent(
@@ -358,7 +358,7 @@ describe("time", () => {
     jest.useFakeTimers().setSystemTime(new Date("2020-01-01 00:00:00"));
     const r1 = await handleUrl({
       url:
-        "https://l.garyyang.work/?dtz=" +
+        "https://lark.justwarnings.com/?dtz=" +
         encodeURIComponent("Etc/GMT-10") +
         "&t=" +
         encodeURIComponent(
@@ -379,7 +379,7 @@ describe("time", () => {
     jest.useFakeTimers().setSystemTime(new Date("2020-01-01 00:00:00"));
     const r1 = await handleUrl({
       url:
-        "https://l.garyyang.work/?dtz=" +
+        "https://lark.justwarnings.com/?dtz=" +
         encodeURIComponent("bad") +
         "&t=" +
         encodeURIComponent(

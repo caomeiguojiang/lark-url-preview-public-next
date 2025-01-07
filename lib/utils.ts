@@ -20,7 +20,7 @@ export function buildCustomPreviewUrl({
   bioExpand?: boolean;
   useTestDomain?: boolean;
 }) {
-  let DOMAIN = "https://l.garyyang.work/";
+  let DOMAIN = "https://lark.justwarnings.com/";
   const stringified = queryString.stringify(
     {
       k: imgKey,
